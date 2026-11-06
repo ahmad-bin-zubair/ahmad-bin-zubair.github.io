@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ahmad Zubair · IT Portfolio</title>
+<meta name="description" content="Portfolio of Ahmad Zubair, IT System & Network Administrator (AZ-104): patch automation, software compliance, security checks, Active Directory GPO audit, Tactical RMM and security monitoring.">
+<style>
+  :root{
+    --navy:#1F2A44; --ink:#1d2433; --muted:#5b6475; --line:#dfe3ea;
+    --bg:#f6f7f9; --card:#ffffff; --accent:#0f766e; --accent-soft:#e6f4f2;
+    --warn-soft:#fbeee6; --warn:#9a3412;
+    --sans:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.55}
+  a{color:var(--accent)}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+  header{background:var(--navy);color:#fff;padding:42px 0 30px}
+  header h1{margin:0;font-size:34px;letter-spacing:.3px}
+  header .role{margin:6px 0 14px;font-size:17px;color:#cdd6e6}
+  header .contact{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px}
+  header .contact a{color:#fff}
+  nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5}
+  nav .wrap{display:flex;flex-wrap:wrap;gap:4px 16px;padding-top:10px;padding-bottom:10px;font-size:14px}
+  nav a{text-decoration:none;color:var(--navy);font-weight:600}
+  section{padding:30px 0 6px}
+  h2{color:var(--navy);font-size:23px;margin:0 0 4px}
+  h3{color:var(--navy);font-size:17px;margin:20px 0 6px}
+  .sub{color:var(--muted);margin:0 0 16px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0 6px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px}
+  .stat b{display:block;font-size:26px;color:var(--navy)}
+  .stat span{font-size:13px;color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;margin:14px 0 20px}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin:0 6px 6px 0}
+  .tag.role{background:#eef0f6;color:var(--navy)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:720px){.grid2{grid-template-columns:1fr} header h1{font-size:28px}}
+  ul{margin:6px 0 10px;padding-left:20px}
+  li{margin:3px 0}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f0f2f6;color:var(--navy)}
+  .flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:10px 0}
+  .step{width:min(520px,100%);border:1px solid #c9cdf0;background:#f2f3fd;border-radius:8px;padding:8px 12px;text-align:center}
+  .step b{display:block;color:#2e3192;font-size:14.5px}
+  .step span{font-size:13px;color:#4b4fa8}
+  .step.start{background:#f3f1ec;border-color:#cfc8b8}.step.start b,.step.start span{color:#4a4436}
+  .step.sec{background:var(--warn-soft);border-color:#e3b9a3}.step.sec b,.step.sec span{color:var(--warn)}
+  .step.out{background:var(--accent-soft);border-color:#a7d3cd}.step.out b,.step.out span{color:#0b5f58}
+  .arrow{width:2px;height:14px;background:#9aa1b2}
+  .outs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(620px,100%)}
+  @media (max-width:560px){.outs{grid-template-columns:1fr}}
+  figure{margin:12px 0}
+  figure img{max-width:100%;border:1px solid var(--line);border-radius:8px;display:block}
+  figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+  .note{font-size:13.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px;margin:10px 0}
+  footer{color:var(--muted);font-size:13px;padding:26px 0 40px;border-top:1px solid var(--line);margin-top:24px}
+  @media print{nav{display:none} .card{break-inside:avoid} header{padding:24px 0 18px} body{background:#fff}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Ahmad Zubair</h1>
+    <div class="role">IT System &amp; Network Administrator · Microsoft Certified Azure Administrator (AZ-104)</div>
+    <div class="contact">
+      <span>Lahore, Pakistan · open to relocation</span>
+      <a href="mailto:ranaahmadzubair786@gmail.com">ranaahmadzubair786@gmail.com</a>
+      <a href="https://www.linkedin.com/in/ahmad-bin-zubair">linkedin.com/in/ahmad-bin-zubair</a>
+    </div>
+  </div>
+</header>
+
+<nav><div class="wrap">
+  <a href="#weekly">Weekly plan</a>
+  <a href="#patching">Patching</a>
+  <a href="#software">Software policy</a>
+  <a href="#security">Security check</a>
+  <a href="#gpo">GPO audit</a>
+  <a href="#rmm">Tactical RMM</a>
+  <a href="#monitoring">Monitoring</a>
+  <a href="#earlier">Earlier work</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="about">
+  <h2>What I do</h2>
+  <p class="sub">I keep a 600+ PC healthcare environment patched, clean and secure, and I automate the repeat work so it runs every week without manual effort. Each project below shows the problem, how I solved it, and the result.</p>
+  <div class="stats">
+    <div class="stat"><b>539</b><span>PCs in automated patching</span></div>
+    <div class="stat"><b>483</b><span>fully patched in first rollout, no forced reboots</span></div>
+    <div class="stat"><b>608</b><span>PCs in software inventory &amp; compliance</span></div>
+    <div class="stat"><b>48</b><span>Group Policies audited, 15 defects fixed</span></div>
+    <div class="stat"><b>160+</b><span>unapproved web-app shortcuts removed</span></div>
+  </div>
+</section>
+
+<!-- 1. WEEKLY PLAN -->
+<section id="weekly">
+  <h2>1. Weekly IT &amp; Security Automation Plan</h2>
+  <p class="sub">TransCure (US medical-billing company, ~700 staff) · runs automatically every Wednesday</p>
+  <div class="card">
+    <span class="tag role">Designed &amp; built by me</span><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Tactical RMM API</span><span class="tag">Task Scheduler</span>
+    <p><b>Problem:</b> patching, software checks and security checks were manual, slow and easy to miss, across 7 floors of PCs that run a night shift.</p>
+    <p><b>Solution:</b> one automated weekly cycle that runs mid-shift, never restarts PCs while people work, and produces two PDF reports for management and an Excel tracker for IT.</p>
+    <div class="flow" aria-label="Weekly automation flow">
+      <div class="step start"><b>Wednesday 11:00 PM (mid-shift)</b><span>Starts automatically</span></div><div class="arrow"></div>
+      <div class="step"><b>1. Software inventory</b><span>Scan all online PCs</span></div><div class="arrow"></div>
+      <div class="step"><b>2. Software policy check</b><span>Approved vs unapproved list</span></div><div class="arrow"></div>
+      <div class="step"><b>3. Remove unapproved software</b><span>Billing apps always protected</span></div><div class="arrow"></div>
+      <div class="step"><b>4. Windows &amp; application patching</b><span>No restart during shift</span></div><div class="arrow"></div>
+      <div class="step"><b>5. Verify results</b><span>Patching, inventory, removal</span></div><div class="arrow"></div>
+      <div class="step"><b>6. Final inventory scan</b><span>Confirm nothing unapproved is left</span></div><div class="arrow"></div>
+      <div class="step sec"><b>7. Security &amp; forensic check</b><span>Virus scan, antivirus health, encryption, remote tools</span></div><div class="arrow"></div>
+      <div class="step start"><b>8. Restart after shift ends</b><span>After 4:00 AM, completes updates</span></div><div class="arrow"></div>
+      <div class="outs">
+        <div class="step out"><b>PDF 1</b><span>Patching &amp; software</span></div>
+        <div class="step out"><b>PDF 2</b><span>Security &amp; forensics</span></div>
+        <div class="step start"><b>Excel tracker</b><span>Deep investigation</span></div>
+      </div><div class="arrow"></div>
+      <div class="step out"><b>Thursday morning</b><span>Reports shared with management</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PATCHING -->
+<section id="patching">
+  <h2>2. Patch Management Automation</h2>
+  <p class="sub">Windows, Microsoft Edge and application updates for 539 PCs</p>
+  <div class="card grid2">
+    <div>
+      <span class="tag role">Built by me</span><span class="tag">PowerShell</span><span class="tag">Tactical RMM</span>
+      <h3>Approach</h3>
+      <ul>
+        <li>PowerShell agent script installs Windows, Edge and app updates silently in the background.</li>
+        <li>Deployed to all PCs at once through Tactical RMM.</li>
+        <li>No forced reboots during work; the restart waits until the shift ends.</li>
+        <li>Live status report: done, pending or offline per PC.</li>
+        <li>Pilot group first, then full rollout.</li>
+      </ul>
+      <h3>Results (first rollout)</h3>
+      <table>
+        <tr><th>Measure</th><th>Result</th></tr>
+        <tr><td>PCs targeted</td><td>539</td></tr>
+        <tr><td>PCs fully patched</td><td>483 (~90%)</td></tr>
+        <tr><td>Windows updates installed</td><td>899</td></tr>
+        <tr><td>Forced reboots during shift</td><td>0</td></tr>
+      </table>
+    </div>
+    <figure>
+      <img src="images/patch-automation-results.png" alt="Patch automation results: 539 PCs targeted, 483 fully patched, 899 updates, 0 forced reboots">
+      <figcaption>Results summary I shared on LinkedIn.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 3. SOFTWARE -->
+<section id="software">
+  <h2>3. Software Inventory &amp; Approved / Unapproved Policy</h2>
+  <p class="sub">608 PCs across 7 floors · HIPAA-focused software control</p>
+  <div class="card">
+    <span class="tag role">Built by me</span><span class="tag">Inventory automation</span><span class="tag">Excel reporting</span><span class="tag">HIPAA</span>
+    <ul>
+      <li>Automated software inventory and compliance reports for 608 PCs.</li>
+      <li>One tracker with tabs: All Software · Approved · Unapproved · Need Decision · Errors &amp; Issues. Typing an app name approves it.</li>
+      <li>Policy of ~170 approved and ~55 unapproved applications. Medical billing and EHR apps are <b>protected</b> and never removed.</li>
+      <li>Unapproved remote-control tools, personal VPNs, personal cloud storage and consumer browsers removed automatically; conflicting antivirus removed manually.</li>
+      <li>Department exceptions handled through approved groups instead of one-off changes.</li>
+      <li>Removed unapproved apps and 160+ web-app (PWA) shortcuts from 500+ PCs.</li>
+    </ul>
+    <p class="note">Why it matters in healthcare: unapproved remote tools and personal cloud apps are a direct path for patient data (PHI) to leave the company.</p>
+  </div>
+</section>
+
+<!-- 4. SECURITY -->
+<section id="security">
+  <h2>4. Night Security &amp; Forensics Check</h2>
+  <p class="sub">Automated security health check with evidence for investigations</p>
+  <div class="card">
+    <span class="tag role">Built by me</span><span class="tag">Microsoft Defender</span><span class="tag">PowerShell</span><span class="tag">Forensics</span>
+    <ul>
+      <li>Runs a quick virus scan on every PC, then checks antivirus status, signatures and disk encryption.</li>
+      <li>Investigates remote-access tools found on PCs and records evidence (CSV) for follow-up.</li>
+      <li>Catch-up run for PCs that were offline during the first pass.</li>
+      <li>Produces a management PDF (security &amp; forensics) and keeps raw evidence for 90 days.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5. GPO -->
+<section id="gpo">
+  <h2>5. Active Directory Group Policy Audit &amp; Hardening</h2>
+  <p class="sub">Full audit, remediation and verification · September 2026</p>
+  <div class="card">
+    <span class="tag role">Audited &amp; remediated by me</span><span class="tag">Active Directory</span><span class="tag">Group Policy</span><span class="tag">DISA STIG</span><span class="tag">HIPAA</span>
+    <table>
+      <tr><th>Measure</th><th>Before</th><th>After</th></tr>
+      <tr><td>Critical findings</td><td>1</td><td>0</td></tr>
+      <tr><td>Policies with no settings</td><td>1</td><td>0</td></tr>
+      <tr><td>Duplicate settings between policies</td><td>16</td><td>0</td></tr>
+      <tr><td>Enforced links protecting the security baseline</td><td>0</td><td>7</td></tr>
+      <tr><td>Policies failed after verification</td><td>—</td><td>0 of 48</td></tr>
+    </table>
+    <h3>Most important finding</h3>
+    <p>A screen-lock policy was linked to about 550 PCs but contained no settings, so no computer locked when a user walked away — a direct HIPAA workstation-security gap. I found it by checking policy contents, not just links, and fixed it (lock after 15 minutes).</p>
+    <h3>What the environment uses</h3>
+    <ul>
+      <li>Tiered administration (Tier 0 / 1 / 2) with logon restrictions.</li>
+      <li>DISA STIG Windows 10 baseline with a documented deviations policy.</li>
+      <li>Windows LAPS, Windows Update for Business, device control (USB, Bluetooth, optical), browser controls.</li>
+      <li>Advanced audit policy and PowerShell logging for SIEM.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. RMM -->
+<section id="rmm">
+  <h2>6. Tactical RMM — Production Admin &amp; Self-Built Home Lab</h2>
+  <p class="sub">Remote monitoring &amp; management</p>
+  <div class="card grid2">
+    <div>
+      <span class="tag role">Production: administrator</span>
+      <ul>
+        <li>Use Tactical RMM daily to manage the company's Windows fleet.</li>
+        <li>Run my patching, inventory, clean-up and security scripts through it (projects 1–4).</li>
+      </ul>
+    </div>
+    <div>
+      <span class="tag role">Home lab: built by me</span>
+      <ul>
+        <li>Self-hosted Tactical RMM v1.6.1 on Debian 13 (VMware Workstation).</li>
+        <li>Stack: nginx, PostgreSQL, Redis, NATS, MeshCentral, Celery.</li>
+        <li>Admin account with 2FA; lab certificate and DNS set up.</li>
+        <li>Wrote a full deployment runbook and interview Q&amp;A from the build.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7. MONITORING -->
+<section id="monitoring">
+  <h2>7. Security Monitoring Operations</h2>
+  <p class="sub">Day-to-day SOC and network monitoring</p>
+  <div class="card">
+    <table>
+      <tr><th>Tool</th><th>My role</th><th>What I do</th></tr>
+      <tr><td>Wazuh SIEM</td><td>Run &amp; monitor</td><td>Triage critical alerts (levels 12–15), review vulnerability detections, track agent health.</td></tr>
+      <tr><td>Velociraptor</td><td>Run &amp; monitor</td><td>Endpoint visibility and investigation support.</td></tr>
+      <tr><td>LibreNMS + Grafana</td><td>Administer</td><td>SNMP alerts and dashboards for switches, firewalls and servers.</td></tr>
+      <tr><td>PRTG</td><td>Deployed by me</td><td>Network monitoring on an on-prem server.</td></tr>
+    </table>
+    <p class="note">Wazuh, Velociraptor, LibreNMS and Grafana were deployed by the company's cybersecurity consultant; I have admin access and operate them daily.</p>
+  </div>
+</section>
+
+<!-- 8. EARLIER -->
+<section id="earlier">
+  <h2>8. Earlier Work — IT Support Engineer</h2>
+  <p class="sub">Sep 2025 – Feb 2026 · promoted from intern to administrator and team lead in under 6 months</p>
+  <div class="card">
+    <ul>
+      <li>Set up Aruba and UniFi access points; deployed virtual machines on VMware ESXi.</li>
+      <li>Managed Cisco switches and Fortinet firewalls (now as administrator).</li>
+      <li>Onboarding and offboarding: system setup, account creation and access removal.</li>
+      <li>Helpdesk and ticketing, IT inventory and asset issuance, remote support via RDP.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills &amp; Certifications</h2>
+  <div class="card">
+    <p><b>Certification:</b> Microsoft Certified: Azure Administrator Associate (AZ-104), 2026</p>
+    <p><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">Group Policy</span><span class="tag">Cisco</span><span class="tag">Fortinet</span><span class="tag">Aruba / UniFi</span><span class="tag">VMware ESXi</span><span class="tag">Azure</span><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Tactical RMM</span><span class="tag">Wazuh</span><span class="tag">Velociraptor</span><span class="tag">LibreNMS / Grafana</span><span class="tag">PRTG</span><span class="tag">HIPAA controls</span></p>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  © 2026 Ahmad Zubair. Company-internal details (hostnames, IP addresses, user data and security findings) are intentionally left out; numbers are totals only.
+</div></footer>
+
+</body>
+</html>
