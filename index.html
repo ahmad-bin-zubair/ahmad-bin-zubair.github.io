@@ -90,7 +90,10 @@
   <a href="#gpo">GPO audit</a>
   <a href="#rmm">Tactical RMM</a>
   <a href="#monitoring">Monitoring</a>
+  <a href="#network">Network</a>
+  <a href="#noc">NOC Console</a>
   <a href="#earlier">Earlier work</a>
+  <a href="#next">Next</a>
 </div></nav>
 
 <main class="wrap">
@@ -243,6 +246,7 @@
         <li>Self-hosted Tactical RMM v1.6.1 on Debian 13 (VMware Workstation).</li>
         <li>Stack: nginx, PostgreSQL, Redis, NATS, MeshCentral, Celery.</li>
         <li>Admin account with 2FA; lab certificate and DNS set up.</li>
+        <li>Single sign-on (SSO) configured for one-click login.</li>
         <li>Wrote a full deployment runbook and interview Q&amp;A from the build.</li>
       </ul>
     </div>
@@ -265,9 +269,45 @@
   </div>
 </section>
 
-<!-- 8. EARLIER -->
+<!-- 8. NETWORK -->
+<section id="network">
+  <h2>8. Network Infrastructure I Manage</h2>
+  <p class="sub">Multi-floor office network for ~700 staff</p>
+  <div class="card">
+    <span class="tag role">Administrator</span><span class="tag">Cisco Catalyst</span><span class="tag">FortiGate</span><span class="tag">Multi-ISP</span><span class="tag">Wi-Fi</span><span class="tag">VMware ESXi</span>
+    <table>
+      <tr><th>Layer</th><th>What it is</th><th>My work</th></tr>
+      <tr><td>Internet edge</td><td>FortiGate firewall with 3 ISP links</td><td>Monitor link traffic and health, work with ISPs on outages, firewall rules and security.</td></tr>
+      <tr><td>Core</td><td>Cisco Catalyst switch stack</td><td>Configuration, stack health checks, VLANs and uplinks.</td></tr>
+      <tr><td>Access</td><td>Cisco Catalyst switches on 7 floors (several stacked)</td><td>Port issues such as err-disabled ports (fix over SSH), PoE, patching to users.</td></tr>
+      <tr><td>Wireless</td><td>Wi-Fi controller and access points (Aruba / UniFi)</td><td>Setup, placement and troubleshooting.</td></tr>
+      <tr><td>Servers</td><td>VMware ESXi hosts, file server</td><td>Virtual machines, datastore capacity, server checks.</td></tr>
+    </table>
+    <p class="note">I also run read-only health reviews of the network through the monitoring system and report problems with clear fixes (owner, impact, next step).</p>
+  </div>
+</section>
+
+<!-- 9. NOC CONSOLE -->
+<section id="noc">
+  <h2>9. Core NOC Console <span class="tag">In progress</span></h2>
+  <p class="sub">My own one-screen console for the core network</p>
+  <div class="card">
+    <span class="tag role">Designing &amp; building</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Netmiko</span><span class="tag">LibreNMS API</span>
+    <p><b>Problem:</b> problems like err-disabled switch ports or an ISP going down were found late, and fixing a port meant logging in to the switch by hand.</p>
+    <p><b>What I am building:</b> one screen for the core infrastructure only — ISP links, firewall, core and floor switches, Wi-Fi and servers.</p>
+    <ul>
+      <li>Floor tabs with switch faceplates; a down or err-disabled port shows red.</li>
+      <li>One-click “Re-enable port” (access ports only, uplinks locked), with confirmation and an audit log.</li>
+      <li>Instant alerts per floor and port; health of temperature, fans and power supplies.</li>
+      <li>Login with user roles; an assistant that suggests fixes in plain language.</li>
+    </ul>
+    <p><b>Status:</b> working prototype with sample data. Next: connect the monitoring system read-only, test in a lab, then deploy on a server VM.</p>
+  </div>
+</section>
+
+<!-- 10. EARLIER -->
 <section id="earlier">
-  <h2>8. Earlier Work — IT Support Engineer</h2>
+  <h2>10. Earlier Work — IT Support Engineer</h2>
   <p class="sub">Sep 2025 – Feb 2026 · promoted from intern to administrator and team lead in under 6 months</p>
   <div class="card">
     <ul>
@@ -276,6 +316,18 @@
       <li>Onboarding and offboarding: system setup, account creation and access removal.</li>
       <li>Helpdesk and ticketing, IT inventory and asset issuance, remote support via RDP.</li>
     </ul>
+  </div>
+</section>
+
+<section id="next">
+  <h2>What I'm Building Next</h2>
+  <div class="card">
+    <ul>
+      <li><b>Wazuh SIEM — self-deployed:</b> install and configure my own Wazuh server and agents from scratch, then document it like the RMM lab.</li>
+      <li><b>Core NOC Console — production build:</b> connect real monitoring data and deploy on a server.</li>
+      <li><b>CCNA certification:</b> to formalise my Cisco switching and routing skills.</li>
+    </ul>
+    <p class="note">I learn by building: each project gets a runbook and is added here when it is done.</p>
   </div>
 </section>
 
