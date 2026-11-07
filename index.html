@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ahmad Zubair · IT Portfolio</title>
-<meta name="description" content="Portfolio of Ahmad Zubair, IT System & Network Administrator (AZ-104): patch automation, software compliance, security checks, Active Directory GPO audit, Tactical RMM and security monitoring.">
+<meta name="description" content="Portfolio of Ahmad Zubair, IT System & Network Administrator (AZ-104): patch automation, software compliance, a self-built network monitoring console, Active Directory GPO audit, Tactical RMM and security monitoring.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ahmad-bin-zubair.github.io/">
 <meta property="og:title" content="Ahmad Zubair · IT Portfolio">
-<meta property="og:description" content="IT System & Network Administrator (AZ-104). Patch automation for 539 PCs, software compliance for 608 PCs, Active Directory GPO audit, Tactical RMM and SOC monitoring.">
+<meta property="og:description" content="IT System & Network Administrator (AZ-104). Patch automation for 539 PCs, software compliance for 608 PCs, a self-built network monitoring console, Active Directory GPO audit, Tactical RMM and SOC monitoring.">
 <meta property="og:image" content="https://ahmad-bin-zubair.github.io/images/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
@@ -289,19 +289,26 @@
 
 <!-- 9. NOC CONSOLE -->
 <section id="noc">
-  <h2>9. Core NOC Console <span class="tag">In progress</span></h2>
-  <p class="sub">My own one-screen console for the core network</p>
+  <h2>9. Core NOC Console <span class="tag">In production</span></h2>
+  <p class="sub">My own monitoring console for a multi-floor office network · live since November 2026</p>
   <div class="card">
-    <span class="tag role">Designing &amp; building</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Netmiko</span><span class="tag">LibreNMS API</span>
-    <p><b>Problem:</b> problems like err-disabled switch ports or an ISP going down were found late, and fixing a port meant logging in to the switch by hand.</p>
-    <p><b>What I am building:</b> one screen for the core infrastructure only — ISP links, firewall, core and floor switches, Wi-Fi and servers.</p>
+    <span class="tag role">Built &amp; deployed</span><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">SNMPv3</span><span class="tag">SSH</span><span class="tag">REST API</span><span class="tag">VMware ESXi</span>
+    <p><b>Problem:</b> an internet link going down or a switch port going err-disabled was often found late, usually when a user called. Fixing a port meant logging in to the switch by hand.</p>
+    <p><b>What it does:</b> one screen for the core network. It checks every device by itself and alerts the team in Microsoft Teams when something goes down.</p>
+    <table>
+      <tr><th>What it checks</th><th>How</th><th>How often</th></tr>
+      <tr><td>3 internet links (latency, jitter, packet loss) and the firewall</td><td>Firewall REST API over HTTPS, read-only token</td><td>Every 60 s</td></tr>
+      <tr><td>11 switches: ports, err-disabled ports, temperature, fans, power</td><td>SNMPv3, encrypted and read-only</td><td>Every 60 s</td></tr>
+      <tr><td>7 Wi-Fi access points, placed on their floor automatically</td><td>Wi-Fi controller API + LLDP</td><td>Every 60 s</td></tr>
+      <tr><td>Servers and virtualization hosts</td><td>Ping (a DNS check for domain controllers)</td><td>Every 30 s</td></tr>
+    </table>
     <ul>
-      <li>Floor tabs with switch faceplates; a down or err-disabled port shows red.</li>
-      <li>One-click “Re-enable port” (access ports only, uplinks locked), with confirmation and an audit log.</li>
-      <li>Instant alerts per floor and port; health of temperature, fans and power supplies.</li>
-      <li>Login with user roles; an assistant that suggests fixes in plain language.</li>
+      <li><b>One-click fix:</b> an err-disabled access port is re-enabled over SSH with one click. Uplinks and trunk ports are blocked.</li>
+      <li><b>Safe rollout:</b> secure SNMPv3 was turned on for the switches with a script, test switch first, stopping on any error.</li>
+      <li><b>Security:</b> sign-in with roles (admin, operator, viewer), lockout after wrong passwords, an audit log of every action, remote access only over VPN.</li>
+      <li><b>Quality:</b> 50 automated tests; tested on a lab VM before going to production. Runs in Docker on an Ubuntu VM.</li>
     </ul>
-    <p><b>Status:</b> working prototype with sample data. Next: connect the monitoring system read-only, test in a lab, then deploy on a server VM.</p>
+    <p><b>Next:</b> sign-in with Active Directory accounts and more user roles.</p>
   </div>
 </section>
 
@@ -324,7 +331,8 @@
   <div class="card">
     <ul>
       <li><b>Wazuh SIEM — self-deployed:</b> install and configure my own Wazuh server and agents from scratch, then document it like the RMM lab.</li>
-      <li><b>Core NOC Console — production build:</b> connect real monitoring data and deploy on a server.</li>
+      <li><b>Core NOC Console — next version:</b> sign-in with Active Directory accounts and more user roles.</li>
+      <li><b>Microsoft 365 home lab:</b> a 30-day hands-on plan for Entra ID, Intune and Autopilot (the cloud version of AD and Group Policy).</li>
       <li><b>CCNA certification:</b> to formalise my Cisco switching and routing skills.</li>
     </ul>
     <p class="note">I learn by building: each project gets a runbook and is added here when it is done.</p>
@@ -335,7 +343,7 @@
   <h2>Skills &amp; Certifications</h2>
   <div class="card">
     <p><b>Certification:</b> Microsoft Certified: Azure Administrator Associate (AZ-104), 2026</p>
-    <p><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">Group Policy</span><span class="tag">Cisco</span><span class="tag">Fortinet</span><span class="tag">Aruba / UniFi</span><span class="tag">VMware ESXi</span><span class="tag">Azure</span><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Tactical RMM</span><span class="tag">Wazuh</span><span class="tag">Velociraptor</span><span class="tag">LibreNMS / Grafana</span><span class="tag">PRTG</span><span class="tag">HIPAA controls</span></p>
+    <p><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">Group Policy</span><span class="tag">Cisco</span><span class="tag">Fortinet</span><span class="tag">Aruba / UniFi</span><span class="tag">VMware ESXi</span><span class="tag">Azure</span><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">SNMPv3</span><span class="tag">Tactical RMM</span><span class="tag">Wazuh</span><span class="tag">Velociraptor</span><span class="tag">LibreNMS / Grafana</span><span class="tag">PRTG</span><span class="tag">HIPAA controls</span></p>
   </div>
 </section>
 
