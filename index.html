@@ -234,6 +234,31 @@ svg.diag text{font-family:var(--sans)}
 .steps div{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center;font-size:13px;color:var(--text2);position:relative;transition:border-color .3s,box-shadow .3s}
 .steps div b{display:block;font-size:12px;color:var(--teal);margin-bottom:2px}
 .steps div.on{border-color:rgba(20,184,166,.6);box-shadow:0 0 0 1px rgba(20,184,166,.25),0 0 22px rgba(20,184,166,.18)}
+/* How I work safely: dry-run -> pilot -> rollout -> verify */
+.safe{margin:0 0 22px}
+.safe-head{display:flex;gap:12px;align-items:center;margin-bottom:16px}
+.safe-head .ic{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;background:rgba(20,184,166,.14);color:var(--teal)}
+.safe-head h3{margin:0;font-size:18.5px;line-height:1.25}
+.safe-head p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.flow li{position:relative;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px;transition:border-color .3s,box-shadow .3s}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:50%;right:-17px;width:8px;height:8px;border-top:2px solid var(--muted);border-right:2px solid var(--muted);transform:translateY(-50%) rotate(45deg);opacity:.8}
+.flow .si{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--c);background:var(--cb);margin-bottom:10px}
+.flow small{display:block;font-size:11.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--c)}
+.flow b{display:block;font-size:17px;margin:1px 0 3px}
+.flow span{display:block;font-size:13.5px;color:var(--text2);line-height:1.45}
+.flow li.on{border-color:var(--c);box-shadow:0 0 0 3px var(--cb)}
+.guards{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:16px}
+.guards .g-title{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-right:4px}
+.safe .lesson{margin:12px 0 0;font-size:14px;color:var(--text2);padding:10px 12px;border-radius:10px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3)}
+.safe .lesson b{color:var(--gold)}
+@media (max-width:900px){.flow{grid-template-columns:repeat(2,1fr);gap:12px}.flow li::after{display:none}}
+@media (max-width:560px){
+  .flow{grid-template-columns:1fr}
+  .flow li{display:grid;grid-template-columns:36px 1fr;column-gap:12px;align-items:start;padding:12px 14px}
+  .flow .si{grid-column:1;grid-row:1/4;margin:0}
+  .flow li:not(:last-child)::after{display:block;top:auto;bottom:-11px;right:auto;left:28px;transform:rotate(135deg)}
+}
 
 /* post images: grid on big screens, swipe row on phones */
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
@@ -469,6 +494,21 @@ dialog.lightbox .x{position:absolute;right:8px;bottom:6px;width:40px;height:40px
 <!-- PROJECTS -->
 <section id="projects"><div class="wrap">
   <div class="reveal"><div class="kicker">Automation projects</div><h2>Built by me, running every week</h2><p class="sub">PowerShell scripts that work through the Tactical RMM API, scheduled with Task Scheduler, with Python turning results into Excel and PDF reports for management.</p></div>
+
+  <div class="card safe reveal" id="safe">
+    <div class="safe-head">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <div><h3>How I work safely</h3><p>Every script goes through the same four steps before it reaches the whole fleet.</p></div>
+    </div>
+    <ol class="flow" id="safeFlow">
+      <li style="--c:var(--sky);--cb:rgba(56,189,248,.15)"><div class="si"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><small>Step 1</small><b>Dry-run</b><span>Shows what it would change. Changes nothing.</span></li>
+      <li style="--c:var(--violet);--cb:rgba(167,139,250,.16)"><div class="si"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5.6 9.5A1.6 1.6 0 0 0 5.8 21h12.4a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></div><small>Step 2</small><b>Pilot</b><span>Runs on 2–3 PCs first, and I check the result.</span></li>
+      <li style="--c:var(--gold);--cb:rgba(251,191,36,.16)"><div class="si"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></div><small>Step 3</small><b>Rollout</b><span>All PCs, in batches of 100, five minutes apart.</span></li>
+      <li style="--c:var(--green);--cb:rgba(52,211,153,.16)"><div class="si"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><small>Step 4</small><b>Verify</b><span>Re-scan, read the results, send the report.</span></li>
+    </ol>
+    <div class="guards"><span class="g-title">Built-in safety nets</span><span class="tag">Business apps &amp; servers protected</span><span class="tag">No restarts during work</span><span class="tag">Type “YES” for emergency actions</span><span class="tag">Every run logged</span></div>
+    <p class="lesson"><b>Learned the hard way:</b> patching all 500+ PCs at once filled the internet link and about 1,500 downloads failed. Since then, every rollout goes in batches.</p>
+  </div>
 
   <div class="filters reveal" role="group" aria-label="Filter projects">
     <button type="button" data-f="all" aria-pressed="true">All <em></em></button>
@@ -764,6 +804,10 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   // Weekly cycle: light up the steps one after another
   const steps = document.querySelectorAll('#cycle div'); let i = 0;
   if (!reduceMotion && steps.length) setInterval(()=>{ steps.forEach(s=>s.classList.remove('on')); steps[i%steps.length].classList.add('on'); i++; }, 900);
+
+  // Work-safely flow: light up dry-run, pilot, rollout, verify in turn
+  const flow = document.querySelectorAll('#safeFlow li'); let j = 0;
+  if (!reduceMotion && flow.length) setInterval(()=>{ flow.forEach(s=>s.classList.remove('on')); flow[j%flow.length].classList.add('on'); j++; }, 1400);
 })();
 
 // Project filter: All / Automation / Security / Systems
