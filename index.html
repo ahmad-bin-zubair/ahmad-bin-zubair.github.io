@@ -23,6 +23,8 @@
   var t = null; try { t = localStorage.getItem('az-theme'); } catch (e) {}
   if (t !== 'light' && t !== 'dark') t = (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
   d.setAttribute('data-theme', t);
+  // Opening animation: once per visit, never for people who turned motion off
+  try { if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) && !sessionStorage.getItem('az-intro')) d.className += ' intro'; } catch (e) {}
 })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -135,7 +137,11 @@ nav.open .bars i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 .hero h1{font-size:clamp(32px,5.2vw,58px);line-height:1.06;margin:18px 0 16px;font-weight:900;letter-spacing:-1px}
 .grad{background:linear-gradient(90deg,var(--g1),var(--g2) 45%,var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p.lead{font-size:clamp(16px,1.6vw,18px);color:var(--muted);max-width:560px;margin:0 0 24px}
-.hero .who{font-size:15px;color:var(--text);font-weight:700;margin:0 0 4px}
+.idrow{display:flex;align-items:center;gap:14px;margin:0 0 18px}
+.idrow .avatar{width:76px;height:76px;flex:none;border-radius:50%;object-fit:cover;padding:3px;background:linear-gradient(135deg,#14b8a6,#0ea5e9);box-shadow:0 8px 26px rgba(14,165,233,.28)}
+.idrow b{display:block;font-size:19px;font-weight:800;line-height:1.2;color:var(--text)}
+.idrow span{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+@media (max-width:520px){.idrow .avatar{width:64px;height:64px}.idrow b{font-size:17px}}
 .btns{display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;min-height:46px;border-radius:12px;font-weight:700;font-size:15px;border:1px solid var(--line2);color:var(--text);background:var(--btn-bg);cursor:pointer;transition:transform .15s,background .15s;box-shadow:var(--shadow)}
 .btn:hover{text-decoration:none;background:var(--btn-hover)}
@@ -326,6 +332,40 @@ dialog.lightbox img{max-height:calc(92vh - 52px);width:auto;max-width:100%;margi
 dialog.lightbox figcaption{padding:12px 56px 12px 16px;font-size:14px;color:var(--muted)}
 dialog.lightbox .x{position:absolute;right:8px;bottom:6px;width:40px;height:40px}
 
+/* education */
+.edu-h{margin:30px 0 12px;font-size:20px}
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.edu h3{margin:6px 0 4px;font-size:16.5px}
+.edu p{margin:0;font-size:14px;color:var(--muted)}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
+
+/* opening animation (once per visit) */
+.boot{display:none}
+html.intro .boot{display:flex;position:fixed;inset:0;z-index:100;background:#070d1f;align-items:center;justify-content:center;flex-direction:column;gap:18px;transition:opacity .5s ease,visibility .5s}
+html.intro .boot.done{opacity:0;visibility:hidden}
+html.intro .boot{animation:bootout .4s ease 3.2s forwards} /* safety net if the script never runs */
+@keyframes bootout{to{opacity:0;visibility:hidden}}
+.boot .mark{width:74px;height:74px;border-radius:20px;display:grid;place-items:center;font:900 29px var(--sans);color:#04211e;background:linear-gradient(135deg,#14b8a6,#38bdf8);animation:bootin .6s cubic-bezier(.2,.8,.2,1) both,bootpulse 1.4s ease-out .6s infinite}
+.boot .bar{width:220px;max-width:70vw;height:3px;border-radius:99px;background:#1f2c52;overflow:hidden}
+.boot .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#14b8a6,#38bdf8);animation:bootbar 1.25s ease .15s forwards}
+.boot pre{margin:0;min-height:68px;min-width:220px;font:13px/1.75 var(--mono);color:#93a1c3;white-space:pre}
+.boot pre b{color:#34d399;font-weight:600}
+@keyframes bootin{from{opacity:0;transform:scale(.6) rotate(-8deg)}to{opacity:1;transform:none}}
+@keyframes bootpulse{0%{box-shadow:0 0 0 0 rgba(20,184,166,.55)}70%{box-shadow:0 0 0 18px rgba(20,184,166,0)}100%{box-shadow:0 0 0 0 rgba(20,184,166,0)}}
+@keyframes bootbar{to{width:100%}}
+
+/* hero: live network background + staggered entrance + shimmering headline */
+.hero{position:relative;isolation:isolate}
+.hero .net{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.85;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.js.ready .hero .grid > .reveal:first-child > *{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.js.ready .hero .grid > .reveal:first-child > :nth-child(2){animation-delay:.08s}
+.js.ready .hero .grid > .reveal:first-child > :nth-child(3){animation-delay:.16s}
+.js.ready .hero .grid > .reveal:first-child > :nth-child(4){animation-delay:.24s}
+.js.ready .hero .grid > .reveal:first-child > :nth-child(5){animation-delay:.32s}
+.hero .grad{background-image:linear-gradient(90deg,var(--g1),var(--g2) 25%,var(--g3) 50%,var(--g2) 75%,var(--g1));background-size:200% auto;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+
 /* reveal on scroll (only when JavaScript runs, so content never stays hidden) */
 .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .js .reveal.in{opacity:1;transform:none}
@@ -335,13 +375,16 @@ dialog.lightbox .x{position:absolute;right:8px;bottom:6px;width:40px;height:40px
   .pill .dot,.badge-live i,.cursor{animation:none}
   .moving{display:none}
   html.theming, html.theming *{transition:none !important}
+  .hero .grad,.js.ready .hero .grid > .reveal:first-child > *{animation:none}
+  .hero .net{display:none}
 }
-@media print{nav,.bg,.term,.totop,.toast,.filters,.swipe-hint{display:none !important} body{background:#fff} .js .reveal{opacity:1;transform:none} .card,.stat{box-shadow:none;break-inside:avoid} .shots{display:grid}}
+@media print{nav,.bg,.term,.totop,.toast,.filters,.swipe-hint,.boot,.hero .net{display:none !important} body{background:#fff} .js .reveal{opacity:1;transform:none} .card,.stat{box-shadow:none;break-inside:avoid} .shots{display:grid}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="bg" aria-hidden="true"></div>
+<div class="boot" id="boot" aria-hidden="true"><div class="mark">AZ</div><div class="bar"><i></i></div><pre id="bootlog"></pre></div>
 
 <nav id="nav"><div class="wrap">
   <a class="logo" href="#top"><span class="mark">AZ</span>Ahmad Zubair</a>
@@ -358,12 +401,16 @@ dialog.lightbox .x{position:absolute;right:8px;bottom:6px;width:40px;height:40px
 </div><div class="progress" aria-hidden="true"><i></i></div></nav>
 
 <header class="hero" id="top">
+  <canvas class="net" id="net" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="grid">
       <div class="reveal">
+        <div class="idrow">
+          <img class="avatar" src="images/ahmad.jpg" alt="Photo of Ahmad Zubair" width="76" height="76">
+          <div><b>Ahmad Zubair</b><span>Lahore, Pakistan · open to relocation</span></div>
+        </div>
         <span class="pill"><span class="dot"></span><span>IT SYSTEM &amp; NETWORK ADMINISTRATOR · TEAM&nbsp;LEAD</span></span>
         <h1>I keep networks up and turn <span class="grad">manual IT work into automation.</span></h1>
-        <p class="who">Ahmad Zubair · Lahore, Pakistan · open to relocation</p>
         <p class="lead">Cisco switching, FortiGate, Windows Server, Active Directory and VMware for a 700+ employee healthcare company. I build the tools that let a small IT team watch, patch and fix hundreds of PCs without staying up all night.</p>
         <div class="btns">
           <a class="btn primary" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>See my work</a>
@@ -383,7 +430,7 @@ dialog.lightbox .x{position:absolute;right:8px;bottom:6px;width:40px;height:40px
       <div class="stat reveal"><b class="c-gold"><span class="count" data-to="0">0</span></b><span>forced restarts during work</span></div>
       <div class="stat reveal"><b class="c-sky"><span class="count" data-to="600">0</span>+</b><span>PCs in weekly compliance reports</span></div>
       <div class="stat reveal"><b class="c-violet"><span class="count" data-to="29">0</span></b><span>core devices watched by my console</span></div>
-      <div class="stat reveal"><b class="c-pink"><span class="count" data-to="48">0</span></b><span>Group Policies audited, 15 fixed</span></div>
+      <div class="stat reveal"><b class="c-pink"><span class="count" data-to="150">0</span>+</b><span>PCs shut down safely each morning</span></div>
     </div>
   </div>
 </header>
@@ -554,19 +601,26 @@ dialog.lightbox .x{position:absolute;right:8px;bottom:6px;width:40px;height:40px
       <div class="nums"><div><b class="c-violet">150+</b><span>PCs each morning</span></div><div><b class="c-gold">5:00</b><span>AM, daily</span></div><div><b class="c-green">2 min</b><span>warning</span></div></div>
     </div>
 
-    <div class="card proj reveal" data-cat="security systems">
-      <div class="top"><div class="ic" style="background:rgba(52,211,153,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div><h3>Group Policy audit &amp; hardening</h3></div>
-      <div class="psr"><b>Found</b><span>A screen-lock policy linked to ~550 PCs had no settings inside, so no PC locked when a user walked away.</span><b>Fixed</b><span>Lock after 15 minutes; removed 16 duplicate settings; added 7 enforced links to protect the security baseline.</span></div>
-      <div class="nums"><div><b class="c-green">48</b><span>policies audited</span></div><div><b class="c-gold">15</b><span>defects fixed</span></div><div><b class="c-teal">0</b><span>failed afterwards</span></div></div>
-    </div>
-
     <div class="card proj reveal" data-cat="systems">
-      <div class="top"><div class="ic" style="background:rgba(56,189,248,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h3>Tactical RMM: daily admin + my own home lab</h3></div>
+      <div class="top"><div class="ic" style="background:rgba(56,189,248,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h3>Tactical RMM: 600+ PCs at work, my own server at home</h3></div>
       <div class="psr"><b>Work</b><span>I run all my scripts through Tactical RMM across the Windows fleet.</span><b>Lab</b><span>Built my own server on Debian 13: nginx, Django API, PostgreSQL, Redis, NATS, MeshCentral, 2FA. Wrote a production install runbook.</span></div>
       <div class="tags"><span class="tag me">Home lab built by me</span><span class="tag">Linux</span><span class="tag">nginx</span><span class="tag">PostgreSQL</span></div>
     </div>
 
-    <div class="card proj wide reveal" data-cat="security automation">
+    <div class="card proj reveal" data-cat="systems">
+      <div class="top"><div class="ic" style="background:rgba(56,189,248,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.8a15 15 0 0 1 20 0"/><path d="M5 12.4a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg></div><h3>UniFi Wi-Fi: every access point from one console</h3></div>
+      <div class="psr"><b>Problem</b><span>Access points on different floors had to be checked and changed one by one.</span><b>Set up</b><span>The UniFi console now manages every AP from one screen: a floor-plan view with connected clients, signal, channel use and uptime. SSIDs, firmware updates and client isolation are pushed from the console, so nobody has to visit an AP to change a setting.</span></div>
+      <div class="nums"><div><b class="c-sky">7</b><span>access points</span></div><div><b class="c-teal">1</b><span>console for all floors</span></div></div>
+      <div class="tags"><span class="tag me">Set up by me</span><span class="tag">UniFi</span><span class="tag">Wi-Fi</span><span class="tag">Floor plan</span></div>
+    </div>
+
+    <div class="card proj reveal" data-cat="systems automation">
+      <div class="top"><div class="ic" style="background:rgba(251,191,36,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></div><h3>Snipe-IT: IT asset tracking</h3></div>
+      <div class="psr"><b>Problem</b><span>Laptops, monitors, phones and network gear were tracked by hand, so it was hard to know who had what.</span><b>Set up</b><span>Snipe-IT (open source) with every asset registered. Checking an asset out to an employee sends a confirmation email automatically; checking it in adds an audit-log entry. Reports show status, history and overdue items.</span></div>
+      <div class="tags"><span class="tag me">Set up by me</span><span class="tag">Snipe-IT</span><span class="tag">Asset tracking</span><span class="tag">Auto emails</span><span class="tag">Audit log</span></div>
+    </div>
+
+    <div class="card proj reveal" data-cat="security automation">
       <div class="top"><div class="ic" style="background:rgba(248,113,113,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div><h3>Night security &amp; forensics check</h3></div>
       <div class="psr"><b>Built</b><span>A weekly check on every PC: quick Defender scan, antivirus and signature health, disk encryption, and evidence collection for unapproved remote-access tools.</span><b>Output</b><span>A security PDF for management and 90 days of raw evidence.</span></div>
     </div>
@@ -663,15 +717,21 @@ dialog.lightbox .x{position:absolute;right:8px;bottom:6px;width:40px;height:40px
     <div class="tl reveal"><small>FEB 2026</small><h3>IT System &amp; Network Administrator · Team Lead</h3><p>Network, firewall, servers, Active Directory and Group Policy; leading the IT support team on a night shift.</p></div>
     <div class="tl now reveal"><small>NOV 2026</small><h3>Automation in production</h3><p>Weekly patch and compliance cycle, my NOC console and the daily fleet shutdown are all live.</p></div>
   </div>
+  <h3 class="edu-h reveal">Education</h3>
+  <div class="edu">
+    <div class="card reveal"><span class="tag me">2024 – 2026</span><h3>Associate Degree, IT Management</h3><p>Riphah International University, Lahore · CGPA 3.49</p></div>
+    <div class="card reveal"><span class="tag">2022 – 2024</span><h3>FSc Pre-Medical</h3><p>Islamabad Model College, H-9, Islamabad</p></div>
+    <div class="card reveal"><span class="tag">2020 – 2022</span><h3>Matric, Computer Science</h3><p>Govt High School, Lahore</p></div>
+  </div>
 </div></section>
 
 <!-- SKILLS -->
 <section id="skills"><div class="wrap">
   <div class="reveal"><div class="kicker">Skills</div><h2>Tools I use and can explain</h2></div>
   <div class="skills">
-    <div class="card reveal"><h3>Networking</h3><div class="tags"><span class="tag">Cisco Catalyst</span><span class="tag">VLAN / STP</span><span class="tag">FortiGate</span><span class="tag">SD-WAN</span><span class="tag">IPsec VPN</span><span class="tag">SNMPv3</span><span class="tag">Wi-Fi</span></div></div>
-    <div class="card reveal"><h3>Systems</h3><div class="tags"><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">Group Policy</span><span class="tag">VMware ESXi</span><span class="tag">Ubuntu / Debian</span></div></div>
-    <div class="card reveal"><h3>Automation</h3><div class="tags"><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">REST APIs</span><span class="tag">Docker (basic)</span><span class="tag">Tactical RMM</span><span class="tag">Git (basic)</span></div></div>
+    <div class="card reveal"><h3>Networking</h3><div class="tags"><span class="tag">Cisco Catalyst</span><span class="tag">VLAN / STP</span><span class="tag">FortiGate</span><span class="tag">SD-WAN</span><span class="tag">IPsec VPN</span><span class="tag">SNMPv3</span><span class="tag">UniFi Wi-Fi</span></div></div>
+    <div class="card reveal"><h3>Systems</h3><div class="tags"><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">Group Policy</span><span class="tag">VMware ESXi</span><span class="tag">Ubuntu / Debian</span><span class="tag">Snipe-IT</span></div></div>
+    <div class="card reveal"><h3>Automation</h3><div class="tags"><span class="tag">PowerShell (basic)</span><span class="tag">Python (basic)</span><span class="tag">REST APIs</span><span class="tag">Docker (basic)</span><span class="tag">Tactical RMM</span><span class="tag">Git (basic)</span></div></div>
     <div class="card reveal"><h3>Security</h3><div class="tags"><span class="tag">Wazuh SIEM</span><span class="tag">Velociraptor</span><span class="tag">Microsoft Defender</span><span class="tag">GPO hardening</span><span class="tag">HIPAA controls</span></div></div>
   </div>
   <div class="learn">
@@ -708,6 +768,67 @@ dialog.lightbox .x{position:absolute;right:8px;bottom:6px;width:40px;height:40px
 
 <script>
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Opening animation: a short "boot" screen once per visit; click or Escape skips it
+(function(){
+  const root = document.documentElement, boot = document.getElementById('boot'), log = document.getElementById('bootlog');
+  if (!root.classList.contains('intro') || !boot) { root.classList.add('ready'); return; }
+  let done = false;
+  function finish(){
+    if (done) return; done = true;
+    boot.classList.add('done'); root.classList.add('ready');
+    try { sessionStorage.setItem('az-intro', '1'); } catch (e) {}
+    setTimeout(()=>root.classList.remove('intro'), 550);
+  }
+  const lines = ['ping core switch ... <b>up</b>', 'load projects ...... <b>ok</b>', 'welcome'];
+  let k = 0;
+  const tick = setInterval(()=>{
+    if (k < lines.length) { log.innerHTML += (k ? '\n' : '') + '› ' + lines[k++]; }
+    else { clearInterval(tick); setTimeout(finish, 220); }
+  }, 330);
+  boot.addEventListener('click', finish);
+  document.addEventListener('keydown', e=>{ if (e.key === 'Escape') finish(); });
+  setTimeout(finish, 2600); // never longer than this
+})();
+
+// Live network background in the hero: drifting nodes that link up when close
+(function(){
+  const c = document.getElementById('net');
+  if (!c || reduceMotion || !c.getContext) return;
+  const x = c.getContext('2d');
+  let w = 0, h = 0, nodes = [], run = true, raf = 0, lastW = -1;
+  function rgb(v, fb){ v = (v || fb).trim().replace('#',''); if (v.length === 3) v = v.split('').map(ch=>ch+ch).join(''); const n = parseInt(v, 16); return [(n>>16)&255, (n>>8)&255, n&255]; }
+  let line, dot;
+  function colors(){ const s = getComputedStyle(document.documentElement); line = rgb(s.getPropertyValue('--teal'), '#14b8a6'); dot = rgb(s.getPropertyValue('--sky'), '#38bdf8'); }
+  function size(){
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = c.clientWidth; h = c.clientHeight; lastW = w;
+    c.width = w * dpr; c.height = h * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(Math.min(64, Math.max(18, w * h / 17000)));
+    nodes = Array.from({length:n}, ()=>({x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-.5)*.32, vy:(Math.random()-.5)*.32, r:Math.random()*1.5+1}));
+  }
+  function frame(){
+    x.clearRect(0, 0, w, h);
+    const D = 140, D2 = D * D;
+    for (const p of nodes) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1; }
+    x.lineWidth = 1;
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const p = nodes[i], q = nodes[j], dx = p.x - q.x, dy = p.y - q.y, d = dx*dx + dy*dy;
+      if (d < D2) { x.strokeStyle = `rgba(${line[0]},${line[1]},${line[2]},${(1 - Math.sqrt(d)/D) * .5})`; x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(q.x, q.y); x.stroke(); }
+    }
+    x.fillStyle = `rgba(${dot[0]},${dot[1]},${dot[2]},.75)`;
+    for (const p of nodes) { x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.2832); x.fill(); }
+    if (run) raf = requestAnimationFrame(frame);
+  }
+  function start(){ if (!run) { run = true; raf = requestAnimationFrame(frame); } }
+  function stop(){ run = false; cancelAnimationFrame(raf); }
+  colors(); size();
+  new MutationObserver(colors).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+  addEventListener('resize', ()=>{ if (c.clientWidth !== lastW) size(); });
+  new IntersectionObserver(es=>{ es[0].isIntersecting ? start() : stop(); }).observe(c);
+  document.addEventListener('visibilitychange', ()=>{ document.hidden ? stop() : start(); });
+  raf = requestAnimationFrame(frame);
+})();
 
 // Light / dark mode: remembered per visitor; follows the system until they choose
 (function(){
