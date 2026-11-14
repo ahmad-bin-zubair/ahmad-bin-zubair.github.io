@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ahmad Zubair · IT System &amp; Network Administrator</title>
-<meta name="description" content="Ahmad Zubair, IT System & Network Administrator and Team Lead in Lahore. Network monitoring console, patch automation for 500+ PCs, software compliance for 600+ PCs, Active Directory and Group Policy, Cisco, FortiGate, Tactical RMM and SOC monitoring.">
+<meta name="description" content="Ahmad Zubair, IT System & Network Administrator in Lahore: SOC monitoring with Wazuh, FortiGate, Active Directory, and automation that patches 500+ PCs weekly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ahmad-bin-zubair.github.io/">
 <meta property="og:title" content="Ahmad Zubair · IT System & Network Administrator">
@@ -13,6 +13,8 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ahmad-bin-zubair.github.io/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ahmad Zubair","jobTitle":"IT System & Network Administrator","url":"https://ahmad-bin-zubair.github.io/","image":"https://ahmad-bin-zubair.github.io/images/ahmad.jpg","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressCountry":"PK"},"sameAs":["https://www.linkedin.com/in/ahmad-bin-zubair","https://github.com/ahmad-bin-zubair"],"knowsAbout":["Network administration","Cisco switching","FortiGate","Active Directory","VMware ESXi","Wazuh SIEM","Security operations","PowerShell automation","Tactical RMM","HIPAA","ISO 27001"]}</script>
 <meta name="theme-color" content="#070d1f">
 <meta name="color-scheme" content="dark light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2314b8a6'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='27' font-weight='900' text-anchor='middle' fill='%2304211e'%3EAZ%3C/text%3E%3C/svg%3E">
@@ -29,7 +31,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* ---------- theme tokens: dark (default) ---------- */
 :root{
@@ -379,6 +381,111 @@ html.intro .boot{animation:bootout .4s ease 3.2s forwards} /* safety net if the 
   .hero .net{display:none}
 }
 @media print{nav,.bg,.term,.totop,.toast,.filters,.swipe-hint,.boot,.hero .net{display:none !important} body{background:#fff} .js .reveal{opacity:1;transform:none} .card,.stat{box-shadow:none;break-inside:avoid} .shots{display:grid}}
+
+/* v2: calmer, less "template" look */
+.boot,html.intro .boot,.hero .net{display:none!important}
+.grad,.hero .grad{background:none!important;animation:none!important;color:var(--teal-soft);-webkit-text-fill-color:var(--teal-soft)}
+.c-gold,.c-sky,.c-pink,.c-green,.c-violet{color:var(--teal-soft)}
+.proj .ic{background:rgba(20,184,166,.12)!important}
+.proj .ic svg{stroke:var(--teal)}
+@media (min-width:600px){.stats{grid-template-columns:repeat(3,1fr)}}
+.hero .grid{grid-template-columns:1fr!important}
+.hero .lead{max-width:760px}
+.heroshot{max-width:1120px;margin-top:8px}
+.heroshot{margin:0;border-radius:14px;overflow:hidden;border:1px solid rgba(127,127,127,.25);box-shadow:0 20px 50px rgba(2,6,23,.18);background:#fff}
+.heroshot img{display:block;width:100%;height:auto}
+.heroshot figcaption{font-size:12.5px;color:#475569;background:#fff;padding:8px 12px;border-top:1px solid rgba(127,127,127,.2)}
+
+/* ===== v3: brand look ===== */
+:root{--head:"Space Grotesk","Inter","Segoe UI",system-ui,sans-serif;--band:#0a1128;--band2:#0f1b3d;--acc:#14b8a6}
+h1,h2,h3,.logo,.stat b,.nums b{font-family:var(--head)}
+h1{font-weight:700;letter-spacing:-1.5px}
+h2{font-weight:700;letter-spacing:-.8px}
+/* dark hero band in both themes; the screenshot breaks out of it */
+.hero{background:
+  radial-gradient(900px 420px at 85% 0%,rgba(20,184,166,.22),transparent 60%),
+  radial-gradient(700px 380px at 0% 30%,rgba(56,189,248,.12),transparent 60%),
+  linear-gradient(var(--band),var(--band2)) top/100% calc(100% - 260px) no-repeat;
+  padding-bottom:30px}
+.hero h1{color:#fff}
+.hero .grad{color:#5eead4!important;-webkit-text-fill-color:#5eead4!important}
+.hero .lead{color:#cbd5ea!important}
+.hero .idrow b{color:#fff}.hero .idrow span{color:#93a1c3}
+.hero .pill{color:#5eead4;background:rgba(20,184,166,.14);border-color:rgba(94,234,212,.35)}
+.hero .btn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff}
+.hero .btn:hover{background:rgba(255,255,255,.12)}
+.btn.primary,.hero .btn.primary{background:#14b8a6;border-color:#14b8a6;color:#04211e}
+.btn.primary:hover{background:#2dd4bf}
+.heroshot{border:1px solid rgba(255,255,255,.14);box-shadow:0 40px 90px rgba(2,6,23,.45),0 0 0 6px rgba(255,255,255,.04)}
+.winbar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#0f1b3d;border-bottom:1px solid rgba(255,255,255,.08)}
+.winbar i{width:11px;height:11px;border-radius:50%;background:#f87171}.winbar i:nth-child(2){background:#fbbf24}.winbar i:nth-child(3){background:#34d399}
+.winbar span{margin-left:10px;font:600 12.5px var(--mono);color:#93a1c3}
+/* numbers: one clean row with dividers */
+.stats{gap:0!important;border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:var(--shadow);overflow:hidden;margin-top:28px}
+.stat{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:22px 24px!important}
+.stat+.stat{border-left:1px solid var(--line)!important}
+.stat b{font-size:clamp(30px,3.4vw,40px)!important;color:var(--text)!important}
+.stat b::after{content:"";display:block;width:28px;height:3px;border-radius:3px;background:var(--acc);margin:10px 0 6px}
+/* numbered section labels */
+body{counter-reset:sec}
+main .kicker{counter-increment:sec}
+main .kicker::before{content:counter(sec,decimal-leading-zero);display:inline-block;margin-right:10px;padding:2px 7px;border-radius:6px;background:rgba(20,184,166,.14);color:var(--teal-soft);letter-spacing:0}
+/* cards: calmer, with a hover accent */
+.card{border-radius:16px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:rgba(20,184,166,.45)}
+.card .ic,.proj .ic{background:transparent!important;border:1px solid rgba(20,184,166,.4)}
+.tag{border-radius:8px}
+@media (max-width:600px){.stats{grid-template-columns:1fr!important}.stat+.stat{border-left:0!important;border-top:1px solid var(--line)!important}.hero{background-size:auto,auto,100% 100%}}
+
+/* ===== security section (protection rings + alert pipeline) ===== */
+.sec-rings{display:grid;grid-template-columns:minmax(260px,460px) 1fr;gap:clamp(18px,3vw,40px);align-items:center;margin-top:22px}
+.rings{width:100%;height:auto;overflow:visible}
+.rings .b1{fill:rgba(20,184,166,.10)}.rings .b2{fill:var(--card)}
+.rings .sp{stroke:var(--teal);transform-box:fill-box;transform-origin:center;animation:ringspin 40s linear infinite}
+.rings .s2,.rings .s4,.rings .s6{stroke:var(--sky)}
+.rings .s2{animation-duration:34s}.rings .s3{animation-duration:28s}.rings .s4{animation-duration:22s}.rings .s5{animation-duration:17s}.rings .s6{animation-duration:12s}
+.rings .rv{animation-direction:reverse}
+@keyframes ringspin{to{transform:rotate(360deg)}}
+.rings .core{fill:var(--teal)}.rings .core-pulse{fill:none;stroke:var(--teal);stroke-width:3}
+.rings .core-t{font:700 19px var(--head,var(--sans));fill:#fff}
+.rings .badges circle{fill:var(--teal)}.rings .badges text{font:700 14px var(--sans);fill:#fff}
+.rings .atk circle{fill:var(--red)}.rings .atk path{stroke:#fff;stroke-width:2.5;stroke-linecap:round}
+.rings .burst{fill:none;stroke:var(--red);stroke-width:3}
+.ringlist{list-style:none;margin:0;padding:0;counter-reset:ring;display:grid;gap:10px}
+.ringlist li{counter-increment:ring;display:grid;grid-template-columns:34px 1fr;column-gap:14px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card2);transition:border-color .25s,transform .25s}
+.ringlist li:hover{border-color:rgba(20,184,166,.5);transform:translateX(4px)}
+.ringlist li::before{content:counter(ring);grid-row:span 2;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font:700 14px/30px var(--sans);text-align:center}
+.ringlist b{font-family:var(--head,var(--sans));font-size:17px}
+.ringlist span{color:var(--muted);font-size:14.5px;line-height:1.5}
+.sec-pipe{margin-top:18px}
+.pipe-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.pipe-head b{font-family:var(--head,var(--sans));font-size:19px}.pipe-head span{color:var(--muted);font-size:14.5px}
+.pipe{width:100%;height:auto;margin:14px 0 4px}
+.pipe .rail{fill:none;stroke:var(--line2);stroke-width:6;stroke-linecap:round}
+.pipe .flow{stroke:var(--teal);opacity:.6;stroke-dasharray:10 14;animation:pipeflow 1.1s linear infinite}
+@keyframes pipeflow{to{stroke-dashoffset:-48}}
+.pipe .nd{fill:var(--card);stroke:var(--teal);stroke-width:3}
+.pipe .nd.hot{stroke:var(--red)}.pipe .nd.ok{fill:var(--teal);stroke:var(--teal)}
+.pipe .nn{font:700 20px var(--sans);fill:var(--text)}.pipe .nn text:last-child{fill:#fff}
+.pipe .dot-r{fill:var(--red)}.pipe .ring-ok{fill:none;stroke:var(--teal);stroke-width:3}
+.pipe-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.pipe-steps div{text-align:center;display:flex;flex-direction:column;gap:4px}
+.pipe-steps b{font-family:var(--head,var(--sans));font-size:15.5px}
+.pipe-steps span{color:var(--muted);font-size:13.5px;line-height:1.45}
+@media (max-width:860px){.sec-rings{grid-template-columns:1fr}.rings{max-width:420px;margin:0 auto}}
+@media (max-width:640px){.pipe-steps{grid-template-columns:1fr;text-align:left}.pipe-steps div{text-align:left;border-left:3px solid var(--teal);padding-left:10px}}
+@media (prefers-reduced-motion:reduce){.rings .sp,.pipe .flow{animation:none}}
+
+/* rings v2: graded bands, curved labels, radar sweep */
+.rings .band{stroke:none}
+.rings .k1{fill:rgba(20,184,166,.06)}.rings .k2{fill:rgba(20,184,166,.10)}.rings .k3{fill:rgba(20,184,166,.14)}
+.rings .k4{fill:rgba(20,184,166,.18)}.rings .k5{fill:rgba(20,184,166,.23)}.rings .k6{fill:rgba(20,184,166,.29)}
+.rings .edges circle{stroke:rgba(94,234,212,.45);stroke-width:1.5}
+[data-theme="light"] .rings .edges circle{stroke:rgba(13,148,136,.45)}
+.rings .rlabels text{font:700 12.5px var(--sans);letter-spacing:2px;fill:var(--teal-soft)}
+.rings .core-t{font:700 15px var(--head,var(--sans));fill:#fff}
+.rings .atk-dot{fill:#ef4444}.rings .atk-glow{fill:#ef4444;opacity:.25}
+.rings .burst{fill:none;stroke:#ef4444;stroke-width:3}
 </style>
 </head>
 <body>
@@ -389,7 +496,7 @@ html.intro .boot{animation:bootout .4s ease 3.2s forwards} /* safety net if the 
 <nav id="nav"><div class="wrap">
   <a class="logo" href="#top"><span class="mark">AZ</span>Ahmad Zubair</a>
   <div class="links" id="navLinks">
-    <a href="#what">What I do</a><a href="#noc">NOC Console</a><a href="#projects">Projects</a><a href="#network">Network</a><a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    <a href="#what">What I do</a><a href="#noc">NOC Console</a><a href="#security">Security</a><a href="#projects">Projects</a><a href="#network">Network</a><a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
   </div>
   <div class="nav-actions">
     <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme" title="Switch light / dark mode">
@@ -418,19 +525,13 @@ html.intro .boot{animation:bootout .4s ease 3.2s forwards} /* safety net if the 
           <a class="btn" href="mailto:ranaahmadzubair786@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a>
         </div>
       </div>
-      <div class="term reveal" aria-label="Terminal showing commands I use">
-        <div class="bar"><i style="background:#f87171"></i><i style="background:#fbbf24"></i><i style="background:#34d399"></i><span>ahmad@noc ~ daily work</span></div>
-        <pre id="term"></pre>
-      </div>
+      <figure class="heroshot reveal"><div class="winbar"><i></i><i></i><i></i><span>Core NOC Console · live</span></div><img src="images/noc-console.png" alt="Screenshot of the NOC console I built: live network map from internet links to floor switches" width="1440" height="812"><figcaption>The NOC console I built and run (demo data, names hidden)</figcaption><pre id="term" hidden></pre></figure>
     </div>
 
     <div class="stats">
-      <div class="stat reveal"><b class="c-teal"><span class="count" data-to="500">0</span>+</b><span>PCs in automated patching</span></div>
-      <div class="stat reveal"><b class="c-green"><span class="count" data-to="90">0</span>%</b><span>fully patched in the first run</span></div>
-      <div class="stat reveal"><b class="c-gold"><span class="count" data-to="0">0</span></b><span>forced restarts during work</span></div>
-      <div class="stat reveal"><b class="c-sky"><span class="count" data-to="600">0</span>+</b><span>PCs in weekly compliance reports</span></div>
-      <div class="stat reveal"><b class="c-violet"><span class="count" data-to="29">0</span></b><span>core devices watched by my console</span></div>
-      <div class="stat reveal"><b class="c-pink"><span class="count" data-to="150">0</span>+</b><span>PCs shut down safely each morning</span></div>
+      <div class="stat reveal"><b class="c-teal"><span class="count" data-to="500">0</span>+</b><span>PCs patched automatically every week</span></div>
+      <div class="stat reveal"><b class="c-teal"><span class="count" data-to="0">0</span></b><span>forced restarts during work</span></div>
+      <div class="stat reveal"><b class="c-teal"><span class="count" data-to="29">0</span></b><span>core devices watched by my console</span></div>
     </div>
   </div>
 </header>
@@ -535,6 +636,85 @@ html.intro .boot{animation:bootout .4s ease 3.2s forwards} /* safety net if the 
         </g>
       </svg>
     </div>
+  </div>
+</div></section>
+
+<!-- SECURITY: HOW I PROTECT DATA -->
+<section id="security"><div class="wrap">
+  <div class="reveal"><div class="kicker">How I protect data</div><h2>Six rings around patient and billing data</h2><p class="sub">For a healthcare billing company (HIPAA), I explained to management how every layer stops an attack before it reaches client data. The red dots are attacks; each one stops at a ring.</p></div>
+
+  <div class="card sec-rings reveal">
+    <svg class="rings" viewBox="0 0 600 600" role="img" aria-label="Six protection rings around patient and billing data; a radar sweep watches and attacks are blocked at the rings">
+      <defs>
+        <radialGradient id="rgCore" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#0d9488"/></radialGradient>
+        <linearGradient id="rgSweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#14b8a6" stop-opacity="0"/><stop offset="1" stop-color="#14b8a6" stop-opacity=".45"/></linearGradient>
+        <filter id="rgGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+        <path id="arc1" d="M56,300 A244,244 0 0 1 544,300"/><path id="arc2" d="M88,300 A212,212 0 0 1 512,300"/>
+        <path id="arc3" d="M120,300 A180,180 0 0 1 480,300"/><path id="arc4" d="M152,300 A148,148 0 0 1 448,300"/>
+        <path id="arc5" d="M184,300 A116,116 0 0 1 416,300"/><path id="arc6" d="M216,300 A84,84 0 0 1 384,300"/>
+      </defs>
+      <circle cx="300" cy="300" r="260" class="band k1"/><circle cx="300" cy="300" r="228" class="band k2"/><circle cx="300" cy="300" r="196" class="band k3"/>
+      <circle cx="300" cy="300" r="164" class="band k4"/><circle cx="300" cy="300" r="132" class="band k5"/><circle cx="300" cy="300" r="100" class="band k6"/>
+      <g class="edges" fill="none"><circle cx="300" cy="300" r="260"/><circle cx="300" cy="300" r="228"/><circle cx="300" cy="300" r="196"/><circle cx="300" cy="300" r="164"/><circle cx="300" cy="300" r="132"/><circle cx="300" cy="300" r="100"/></g>
+      <g class="moving"><path d="M300,300 L300,40 A260,260 0 0 1 467,101 Z" fill="url(#rgSweep)"><animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="7s" repeatCount="indefinite"/></path></g>
+      <g class="rlabels">
+        <g transform="rotate(-62 300 300)"><text><textPath href="#arc1" startOffset="50%" text-anchor="middle">1 · FIREWALL</textPath></text></g>
+        <g transform="rotate(-34 300 300)"><text><textPath href="#arc2" startOffset="50%" text-anchor="middle">2 · ACCESS</textPath></text></g>
+        <g transform="rotate(-6 300 300)"><text><textPath href="#arc3" startOffset="50%" text-anchor="middle">3 · FILES</textPath></text></g>
+        <g transform="rotate(22 300 300)"><text><textPath href="#arc4" startOffset="50%" text-anchor="middle">4 · PC CARE</textPath></text></g>
+        <g transform="rotate(52 300 300)"><text><textPath href="#arc5" startOffset="50%" text-anchor="middle">5 · ALERTS</textPath></text></g>
+        <g transform="rotate(88 300 300)"><text><textPath href="#arc6" startOffset="50%" text-anchor="middle">6 · PROOF</textPath></text></g>
+      </g>
+      <circle cx="300" cy="300" r="68" fill="#14b8a6" opacity=".45" filter="url(#rgGlow)"><animate attributeName="opacity" values=".25;.6;.25" dur="2.6s" repeatCount="indefinite"/></circle>
+      <circle cx="300" cy="300" r="68" fill="url(#rgCore)"/>
+      <path d="M300,248 L324,258 V280 C324,297 314,308 300,314 C286,308 276,297 276,280 V258 Z" fill="#fff" opacity=".95"/>
+      <path d="M290,281 L298,289 L312,274" stroke="#0d9488" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g class="core-t" text-anchor="middle"><text x="300" y="335">Patient &amp; billing</text><text x="300" y="353">data</text></g>
+      <g class="moving">
+        <g opacity="0"><circle r="18" class="atk-glow"/><circle r="9" class="atk-dot"/><animateMotion dur="4.8s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear" path="M0,300 L40,300"/><animate attributeName="opacity" dur="4.8s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.62;1"/></g>
+        <circle class="burst" cx="40" cy="300" r="0"><animate attributeName="r" dur="4.8s" repeatCount="indefinite" values="0;0;34;34" keyTimes="0;0.55;0.85;1"/><animate attributeName="opacity" dur="4.8s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.54;0.56;0.85;1"/></circle>
+        <g opacity="0"><circle r="18" class="atk-glow"/><circle r="9" class="atk-dot"/><animateMotion dur="4.8s" begin="-1.6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear" path="M17,102 L87,151"/><animate attributeName="opacity" dur="4.8s" begin="-1.6s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.62;1"/></g>
+        <circle class="burst" cx="87" cy="151" r="0"><animate attributeName="r" dur="4.8s" begin="-1.6s" repeatCount="indefinite" values="0;0;34;34" keyTimes="0;0.55;0.85;1"/><animate attributeName="opacity" dur="4.8s" begin="-1.6s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.54;0.56;0.85;1"/></circle>
+        <g opacity="0"><circle r="18" class="atk-glow"/><circle r="9" class="atk-dot"/><animateMotion dur="4.8s" begin="-3.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear" path="M17,498 L87,449"/><animate attributeName="opacity" dur="4.8s" begin="-3.2s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.62;1"/></g>
+        <circle class="burst" cx="87" cy="449" r="0"><animate attributeName="r" dur="4.8s" begin="-3.2s" repeatCount="indefinite" values="0;0;34;34" keyTimes="0;0.55;0.85;1"/><animate attributeName="opacity" dur="4.8s" begin="-3.2s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.54;0.56;0.85;1"/></circle>
+        <g opacity="0"><circle r="18" class="atk-glow"/><circle r="9" class="atk-dot"/><animateMotion dur="4.8s" begin="-0.8s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear" path="M564,78 L475,153"/><animate attributeName="opacity" dur="4.8s" begin="-0.8s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.62;1"/></g>
+        <circle class="burst" cx="475" cy="153" r="0"><animate attributeName="r" dur="4.8s" begin="-0.8s" repeatCount="indefinite" values="0;0;34;34" keyTimes="0;0.55;0.85;1"/><animate attributeName="opacity" dur="4.8s" begin="-0.8s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.54;0.56;0.85;1"/></circle>
+        <g opacity="0"><circle r="18" class="atk-glow"/><circle r="9" class="atk-dot"/><animateMotion dur="4.8s" begin="-2.4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear" path="M583,498 L513,449"/><animate attributeName="opacity" dur="4.8s" begin="-2.4s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.62;1"/></g>
+        <circle class="burst" cx="513" cy="449" r="0"><animate attributeName="r" dur="4.8s" begin="-2.4s" repeatCount="indefinite" values="0;0;34;34" keyTimes="0;0.55;0.85;1"/><animate attributeName="opacity" dur="4.8s" begin="-2.4s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.54;0.56;0.85;1"/></circle>
+        <g opacity="0"><circle r="18" class="atk-glow"/><circle r="9" class="atk-dot"/><animateMotion dur="4.8s" begin="-4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear" path="M600,300 L560,300"/><animate attributeName="opacity" dur="4.8s" begin="-4s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.62;1"/></g>
+        <circle class="burst" cx="560" cy="300" r="0"><animate attributeName="r" dur="4.8s" begin="-4s" repeatCount="indefinite" values="0;0;34;34" keyTimes="0;0.55;0.85;1"/><animate attributeName="opacity" dur="4.8s" begin="-4s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.54;0.56;0.85;1"/></circle>
+      </g>
+    </svg>
+    <ol class="ringlist">
+      <li><b>Only work websites</b><span>The firewall opens only an approved list of billing and insurance portals; everything else is blocked.</span></li>
+      <li><b>Only the right people</b><span>One sign-on, role-based access, passwords in a vault. Client systems only by approved portal or secure RDP.</span></li>
+      <li><b>Files stay inside</b><span>Client files move only through company systems on an on-prem server, not open to the public internet.</span></li>
+      <li><b>Every PC kept clean</b><span>Weekly patching and removal of unapproved and remote-access tools through RMM, plus a nightly scan.</span></li>
+      <li><b>Alerts around the clock</b><span>Wazuh raises an alert on unusual activity; OpenCTI and Velociraptor help check and investigate.</span></li>
+      <li><b>Proof every week</b><span>Audit log, two PDF reports and a tracker for management: the evidence ISO 27001 asks for.</span></li>
+    </ol>
+  </div>
+
+  <div class="card sec-pipe reveal">
+    <div class="pipe-head"><b>How an alert travels</b><span>From the first sign of trouble to a closed, reported case</span></div>
+    <svg class="pipe" viewBox="0 0 1000 120" aria-hidden="true">
+      <path class="rail" d="M100,60 H900"/><path class="rail flow" d="M100,60 H900"/>
+      <circle class="nd" cx="100" cy="60" r="30"/><circle class="nd hot" cx="300" cy="60" r="30"/><circle class="nd" cx="500" cy="60" r="30"/><circle class="nd" cx="700" cy="60" r="30"/><circle class="nd ok" cx="900" cy="60" r="30"/>
+      <g class="nn" text-anchor="middle"><text x="100" y="67">PC</text><text x="300" y="67">1</text><text x="500" y="67">2</text><text x="700" y="67">3</text><text x="900" y="67">✓</text></g>
+      <g class="moving">
+        <circle class="dot-r" r="9"><animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.8;1" calcMode="linear" path="M100,60 H900"/><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.78;0.8;1"/></circle>
+        <circle class="dot-r" r="9"><animateMotion dur="5s" begin="-2.5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.8;1" calcMode="linear" path="M100,60 H900"/><animate attributeName="opacity" dur="5s" begin="-2.5s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.78;0.8;1"/></circle>
+        <circle class="ring-ok" cx="900" cy="60" r="30"><animate attributeName="r" values="30;50" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="2.5s" repeatCount="indefinite"/></circle>
+      </g>
+    </svg>
+    <div class="pipe-steps">
+      <div><b>Source</b><span>An agent on every PC and server sends its events</span></div>
+      <div><b>1 · Detect</b><span>Wazuh rules spot malware, failed logins, odd changes</span></div>
+      <div><b>2 · Check</b><span>OpenCTI: is this address or file a known attacker?</span></div>
+      <div><b>3 · Investigate</b><span>Velociraptor collects evidence and changes nothing</span></div>
+      <div><b>Stop &amp; report</b><span>Blocked with approval, then in the weekly report</span></div>
+    </div>
+    <div class="tags"><span class="tag me">Explained to management by me</span><span class="tag">HIPAA</span><span class="tag">ISO 27001</span><span class="tag">Wazuh</span><span class="tag">OpenCTI</span><span class="tag">Velociraptor</span></div>
   </div>
 </div></section>
 

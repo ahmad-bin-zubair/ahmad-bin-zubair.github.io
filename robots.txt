@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ahmad-bin-zubair.github.io/sitemap.xml
